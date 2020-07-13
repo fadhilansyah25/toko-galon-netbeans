@@ -69,7 +69,7 @@ private ResultSet res_FadilArdiansyah;
 
         id_barangTextField.setEditable(false);
 
-        tipe_barangComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Galon", "Gelas", "Botol" }));
+        tipe_barangComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Galon", "Kardus Gelas", "Kardus Botol" }));
         tipe_barangComboBox.setSelectedIndex(-1);
 
         ukuran_barangComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "240 ml", "330 ml", "450 ml", "600 ml", "750 ml", "1500 ml", "19 Liter", " " }));
