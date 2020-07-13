@@ -51,6 +51,8 @@ private ResultSet res_FadilArdiansyah;
         jButton1 = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         hapusButton = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        stok_barangTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,6 +123,8 @@ private ResultSet res_FadilArdiansyah;
             }
         });
 
+        jLabel7.setText("Stok");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,30 +132,34 @@ private ResultSet res_FadilArdiansyah;
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(simpanButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(id_barangTextField)
                             .addComponent(harga_barangTextField)
                             .addComponent(nama_barangTextField)
                             .addComponent(tipe_barangComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ukuran_barangComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                            .addComponent(ukuran_barangComboBox, 0, 134, Short.MAX_VALUE)
+                            .addComponent(stok_barangTextField))))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(simpanButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -183,13 +191,16 @@ private ResultSet res_FadilArdiansyah;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(harga_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(simpanButton)
-                    .addComponent(jButton1)
-                    .addComponent(editButton)
-                    .addComponent(hapusButton))
-                .addGap(39, 39, 39))
+                    .addComponent(jLabel7)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(simpanButton)
+                        .addComponent(jButton1)
+                        .addComponent(editButton)
+                        .addComponent(hapusButton))
+                    .addComponent(stok_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73))
         );
 
         pack();
@@ -202,6 +213,7 @@ private ResultSet res_FadilArdiansyah;
             +"'"+nama_barangTextField.getText()+"',"
             +"'"+tipe_barangComboBox.getSelectedItem()+"',"
             +"'"+ukuran_barangComboBox.getSelectedItem()+"',"
+            +"'"+Integer.parseInt(stok_barangTextField.getText())+"',"
             +"'"+Integer.parseInt(harga_barangTextField.getText())+"')");
             kosongkan();
             tabel();
@@ -220,17 +232,19 @@ private ResultSet res_FadilArdiansyah;
             return;
         }
 
-        String code_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 0);
+        String code0_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 0);
         String code1_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 1);
         String code2_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 2);
         String code3_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 3);
         String code4_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 4);
+        String code5_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 5);
 
-        id_barangTextField.setText(code_FadilArdiansyah);
+        id_barangTextField.setText(code0_FadilArdiansyah);
         nama_barangTextField.setText(code1_FadilArdiansyah);
         tipe_barangComboBox.setSelectedItem(code2_FadilArdiansyah);
         ukuran_barangComboBox.setSelectedItem(code3_FadilArdiansyah);
-        harga_barangTextField.setText(code4_FadilArdiansyah);
+        stok_barangTextField.setText(code4_FadilArdiansyah);
+        harga_barangTextField.setText(code5_FadilArdiansyah);
     }//GEN-LAST:event_Tabel_BarangMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -243,7 +257,7 @@ private ResultSet res_FadilArdiansyah;
         int ok_FadilArdiansyah = JOptionPane.showConfirmDialog(null, "Apakah ingin mengedit Data ini?", "Edit Data", JOptionPane.YES_NO_CANCEL_OPTION);
         try {
             PreparedStatement stat_FadilArdiansyah = conn_FadilArdiansyah.prepareStatement(
-                "update t_barang set id_barang=?, nama_barang=?, tipe=?, ukuran=?, harga_barang=? where id_barang='"
+                "update t_barang set id_barang=?, nama_barang=?, tipe=?, ukuran=?, stok_barang=?, harga_barang=? where id_barang='"
                 +Integer.parseInt(id_barangTextField.getText())+"'");
                 if (ok_FadilArdiansyah == 0) {
                     try {
@@ -251,7 +265,8 @@ private ResultSet res_FadilArdiansyah;
                         stat_FadilArdiansyah.setString(2, nama_barangTextField.getText());
                         stat_FadilArdiansyah.setString(3, (String)tipe_barangComboBox.getSelectedItem());
                         stat_FadilArdiansyah.setString(4, (String)ukuran_barangComboBox.getSelectedItem());
-                        stat_FadilArdiansyah.setInt(5, Integer.parseInt(harga_barangTextField.getText()));
+                        stat_FadilArdiansyah.setInt(5, Integer.parseInt(stok_barangTextField.getText()));
+                        stat_FadilArdiansyah.setInt(6, Integer.parseInt(harga_barangTextField.getText()));
                         stat_FadilArdiansyah.executeUpdate();
 
                         JOptionPane.showMessageDialog(null, "Update Data Berhasil");
@@ -335,9 +350,11 @@ private ResultSet res_FadilArdiansyah;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nama_barangTextField;
     private javax.swing.JButton simpanButton;
+    private javax.swing.JTextField stok_barangTextField;
     private javax.swing.JComboBox<String> tipe_barangComboBox;
     private javax.swing.JComboBox<String> ukuran_barangComboBox;
     // End of variables declaration//GEN-END:variables
@@ -358,6 +375,7 @@ private ResultSet res_FadilArdiansyah;
         nama_barangTextField.setText("");
         tipe_barangComboBox.setSelectedIndex(-1);
         ukuran_barangComboBox.setSelectedIndex(-1);
+        stok_barangTextField.setText("");
         harga_barangTextField.setText("");
     }
 
@@ -365,8 +383,9 @@ private ResultSet res_FadilArdiansyah;
         DefaultTableModel tabel = new DefaultTableModel();
         tabel.addColumn("ID Barang");
         tabel.addColumn("Nama Barang");
-        tabel.addColumn("Ukuran Barang");
+        tabel.addColumn("Ukuran");
         tabel.addColumn("Isi Volume");
+        tabel.addColumn("Stok Barang");
         tabel.addColumn("Harga RP");
         Tabel_Barang.setModel(tabel);
 
@@ -379,6 +398,7 @@ private ResultSet res_FadilArdiansyah;
                     res_FadilArdiansyah.getString("nama_barang"),
                     res_FadilArdiansyah.getString("tipe"),
                     res_FadilArdiansyah.getString("ukuran"),
+                    res_FadilArdiansyah.getString("stok_barang"),
                     res_FadilArdiansyah.getString("harga_barang")
                 });
             }
