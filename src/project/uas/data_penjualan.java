@@ -23,6 +23,7 @@ private ResultSet res_FadilArdiansyah;
         koneksi();
         kosongkan();
         tabel();
+        tampil_combobox();
     }
 
     /**
@@ -39,7 +40,6 @@ private ResultSet res_FadilArdiansyah;
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         id_transaksiTextField = new javax.swing.JTextField();
-        id_barangTextField = new javax.swing.JTextField();
         nama_pembeliTextField = new javax.swing.JTextField();
         simpanButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -49,11 +49,14 @@ private ResultSet res_FadilArdiansyah;
         hapusButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jumlah_beliTextField = new javax.swing.JTextField();
+        id_barangComboBox = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        nama_barangTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Input Data Barang");
+        jLabel1.setText("Transaksi");
 
         jLabel2.setText("Id Transaksi");
 
@@ -111,6 +114,14 @@ private ResultSet res_FadilArdiansyah;
 
         jLabel7.setText("Jumlah Beli");
 
+        jLabel4.setText("Nama Barang");
+
+        nama_barangTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nama_barangTextFieldMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,32 +129,37 @@ private ResultSet res_FadilArdiansyah;
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nama_pembeliTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                             .addComponent(id_transaksiTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(id_barangTextField)
-                            .addComponent(nama_pembeliTextField)
-                            .addComponent(jumlah_beliTextField))))
-                .addGap(34, 34, 34)
+                            .addComponent(id_barangComboBox, 0, 134, Short.MAX_VALUE)
+                            .addComponent(nama_barangTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(jumlah_beliTextField)))
+                    .addComponent(jLabel1))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
                         .addComponent(simpanButton)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(67, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,24 +168,28 @@ private ResultSet res_FadilArdiansyah;
                 .addComponent(jLabel1)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(id_transaksiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(nama_pembeliTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
+                            .addComponent(nama_pembeliTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(id_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(35, 35, 35)
+                            .addComponent(jLabel6)
+                            .addComponent(id_barangComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jumlah_beliTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                            .addComponent(jLabel4)
+                            .addComponent(nama_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jumlah_beliTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(simpanButton)
                     .addComponent(jButton1)
@@ -186,7 +206,7 @@ private ResultSet res_FadilArdiansyah;
         try {
             stat_FadilArdiansyah.executeUpdate("insert into penjualan_air values (NULL,"
             +"'"+nama_pembeliTextField.getText()+"',"
-            +"'"+Integer.parseInt(id_barangTextField.getText())+"',"
+            +"'"+id_barangComboBox.getSelectedItem()+"',"
             +"'"+Integer.parseInt(jumlah_beliTextField.getText())+"')");
             kosongkan();
             tabel();
@@ -209,11 +229,13 @@ private ResultSet res_FadilArdiansyah;
         String code1_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 1);
         String code2_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 2);
         String code3_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 3);
+        String code4_FadilArdiasnyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 4);
 
         id_transaksiTextField.setText(code0_FadilArdiansyah);
         nama_pembeliTextField.setText(code1_FadilArdiansyah);
-        id_barangTextField.setText(code2_FadilArdiansyah);
-        jumlah_beliTextField.setText(code3_FadilArdiansyah);
+        id_barangComboBox.setSelectedItem(code2_FadilArdiansyah);
+        nama_barangTextField.setText(code3_FadilArdiansyah);
+        jumlah_beliTextField.setText(code4_FadilArdiasnyah);
     }//GEN-LAST:event_Tabel_BarangMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -232,7 +254,7 @@ private ResultSet res_FadilArdiansyah;
                     try {
                         stat_FadilArdiansyah.setInt(1, Integer.parseInt(id_transaksiTextField.getText()));
                         stat_FadilArdiansyah.setString(2, nama_pembeliTextField.getText());
-                        stat_FadilArdiansyah.setInt(3, Integer.parseInt(id_barangTextField.getText()));
+                        stat_FadilArdiansyah.setInt(3, (Integer)id_barangComboBox.getSelectedItem());
                         stat_FadilArdiansyah.setInt(4, Integer.parseInt(jumlah_beliTextField.getText()));
                         stat_FadilArdiansyah.executeUpdate();
 
@@ -268,6 +290,11 @@ private ResultSet res_FadilArdiansyah;
         }
         tabel();
     }//GEN-LAST:event_hapusButtonActionPerformed
+
+    private void nama_barangTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nama_barangTextFieldMouseClicked
+        // TODO add your handling code here:
+        tampil();
+    }//GEN-LAST:event_nama_barangTextFieldMouseClicked
 
     /**
      * @param args the command line arguments
@@ -309,16 +336,18 @@ private ResultSet res_FadilArdiansyah;
     private javax.swing.JTable Tabel_Barang;
     private javax.swing.JButton editButton;
     private javax.swing.JButton hapusButton;
-    private javax.swing.JTextField id_barangTextField;
+    private javax.swing.JComboBox<String> id_barangComboBox;
     private javax.swing.JTextField id_transaksiTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jumlah_beliTextField;
+    private javax.swing.JTextField nama_barangTextField;
     private javax.swing.JTextField nama_pembeliTextField;
     private javax.swing.JButton simpanButton;
     // End of variables declaration//GEN-END:variables
@@ -337,7 +366,8 @@ private ResultSet res_FadilArdiansyah;
     private void kosongkan() {
         id_transaksiTextField.setText("");
         nama_pembeliTextField.setText("");
-        id_barangTextField.setText("");
+        id_barangComboBox.setSelectedIndex(-1);
+        nama_barangTextField.setText("");
         jumlah_beliTextField.setText("");
     }
 
@@ -365,6 +395,37 @@ private ResultSet res_FadilArdiansyah;
         } catch (Exception e) {
             //TODO: handle exception
             JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    private void tampil_combobox() {
+        try {
+            String sql = "select id_barang from t_barang order by id_barang asc";
+            res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery(sql);
+            id_barangComboBox.addItem("-Pilih Kode Barang");
+            while (res_FadilArdiansyah.next()) {
+                id_barangComboBox.addItem(res_FadilArdiansyah.getString("id_barang"));
+                
+            }
+        } catch (Exception e) {
+            //TODO: handle exception
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    private void tampil() {
+        try {
+            String sql = "select nama_barang from t_barang where id_barang='"+id_barangComboBox.getSelectedItem()+"'";
+            res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery(sql);
+
+            while (res_FadilArdiansyah.next()) {
+                {   
+                    nama_barangTextField.setText(res_FadilArdiansyah.getString("nama_barang"));
+                }
+            }
+        } catch (Exception e) {
+            //TODO: handle exception
+            JOptionPane.showMessageDialog(rootPane, e);
         }
     }
 }
