@@ -11,18 +11,20 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Fadhilansyah25
  */
-public class data_barang extends javax.swing.JFrame {
+public class data_barangComboBox extends javax.swing.JFrame {
 private Connection conn_FadilArdiansyah;
 private Statement stat_FadilArdiansyah;
 private ResultSet res_FadilArdiansyah;
     /**
      * Creates new form data_barang
      */
-    public data_barang() {
+    public data_barangComboBox() {
         initComponents();
         koneksi();
-        kosongkan();
-        tabel();
+        // kosongkan();
+        tampil_combobox();
+        tampil();
+        // tabel();
     }
 
     /**
@@ -40,19 +42,13 @@ private ResultSet res_FadilArdiansyah;
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        id_barangTextField = new javax.swing.JTextField();
         harga_barangTextField = new javax.swing.JTextField();
         nama_barangTextField = new javax.swing.JTextField();
         tipe_barangComboBox = new javax.swing.JComboBox<>();
         ukuran_barangComboBox = new javax.swing.JComboBox<>();
-        simpanButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabel_Barang = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        editButton = new javax.swing.JButton();
-        hapusButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         stok_barangTextField = new javax.swing.JTextField();
+        id_barangComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,59 +65,17 @@ private ResultSet res_FadilArdiansyah;
 
         jLabel6.setText("Harga");
 
-        id_barangTextField.setEditable(false);
+        nama_barangTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nama_barangTextFieldMouseClicked(evt);
+            }
+        });
 
         tipe_barangComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Galon", "Kardus Gelas", "Kardus Botol" }));
         tipe_barangComboBox.setSelectedIndex(-1);
 
         ukuran_barangComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "240 ml", "330 ml", "450 ml", "600 ml", "750 ml", "1500 ml", "19 Liter", " " }));
         ukuran_barangComboBox.setSelectedIndex(-1);
-
-        simpanButton.setText("Simpan");
-        simpanButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpanButtonActionPerformed(evt);
-            }
-        });
-
-        Tabel_Barang.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        Tabel_Barang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Tabel_BarangMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(Tabel_Barang);
-
-        jButton1.setText("Clear");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        editButton.setText("Edit");
-        editButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
-            }
-        });
-
-        hapusButton.setText("Hapus");
-        hapusButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hapusButtonActionPerformed(evt);
-            }
-        });
 
         jLabel7.setText("Stok");
 
@@ -144,163 +98,53 @@ private ResultSet res_FadilArdiansyah;
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(id_barangTextField)
                             .addComponent(harga_barangTextField)
                             .addComponent(nama_barangTextField)
                             .addComponent(tipe_barangComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ukuran_barangComboBox, 0, 134, Short.MAX_VALUE)
-                            .addComponent(stok_barangTextField))))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(simpanButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                            .addComponent(stok_barangTextField)
+                            .addComponent(id_barangComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(id_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(nama_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(tipe_barangComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(ukuran_barangComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(harga_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(id_barangComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(nama_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tipe_barangComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(ukuran_barangComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(harga_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(simpanButton)
-                        .addComponent(jButton1)
-                        .addComponent(editButton)
-                        .addComponent(hapusButton))
                     .addComponent(stok_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(73, 73, 73))
+                .addGap(75, 75, 75))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanButtonActionPerformed
+    private void nama_barangTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nama_barangTextFieldMouseClicked
         // TODO add your handling code here:
-        try {
-            stat_FadilArdiansyah.executeUpdate("insert into t_barang values (NULL,"
-            +"'"+nama_barangTextField.getText()+"',"
-            +"'"+tipe_barangComboBox.getSelectedItem()+"',"
-            +"'"+ukuran_barangComboBox.getSelectedItem()+"',"
-            +"'"+Integer.parseInt(stok_barangTextField.getText())+"',"
-            +"'"+Integer.parseInt(harga_barangTextField.getText())+"')");
-            kosongkan();
-            tabel();
-
-            JOptionPane.showMessageDialog(null, "Data Barang Berhasil Disimpan");
-        } catch (Exception e) {
-            //TODO: handle exception
-            JOptionPane.showMessageDialog(null, "Data Gagal Disimpan"+e);
-        }
-    }//GEN-LAST:event_simpanButtonActionPerformed
-
-    private void Tabel_BarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabel_BarangMouseClicked
-        // TODO add your handling code here:
-        int i_FadilArdiansyah = Tabel_Barang.getSelectedRow();
-        if (i_FadilArdiansyah == -1) {
-            return;
-        }
-
-        String code0_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 0);
-        String code1_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 1);
-        String code2_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 2);
-        String code3_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 3);
-        String code4_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 4);
-        String code5_FadilArdiansyah = (String)Tabel_Barang.getValueAt(i_FadilArdiansyah, 5);
-
-        id_barangTextField.setText(code0_FadilArdiansyah);
-        nama_barangTextField.setText(code1_FadilArdiansyah);
-        tipe_barangComboBox.setSelectedItem(code2_FadilArdiansyah);
-        ukuran_barangComboBox.setSelectedItem(code3_FadilArdiansyah);
-        stok_barangTextField.setText(code4_FadilArdiansyah);
-        harga_barangTextField.setText(code5_FadilArdiansyah);
-    }//GEN-LAST:event_Tabel_BarangMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        kosongkan();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
-        int ok_FadilArdiansyah = JOptionPane.showConfirmDialog(null, "Apakah ingin mengedit Data ini?", "Edit Data", JOptionPane.YES_NO_CANCEL_OPTION);
-        try {
-            PreparedStatement stat_FadilArdiansyah = conn_FadilArdiansyah.prepareStatement(
-                "update t_barang set id_barang=?, nama_barang=?, tipe=?, ukuran=?, stok_barang=?, harga_barang=? where id_barang='"
-                +Integer.parseInt(id_barangTextField.getText())+"'");
-                if (ok_FadilArdiansyah == 0) {
-                    try {
-                        stat_FadilArdiansyah.setInt(1, Integer.parseInt(id_barangTextField.getText()));
-                        stat_FadilArdiansyah.setString(2, nama_barangTextField.getText());
-                        stat_FadilArdiansyah.setString(3, (String)tipe_barangComboBox.getSelectedItem());
-                        stat_FadilArdiansyah.setString(4, (String)ukuran_barangComboBox.getSelectedItem());
-                        stat_FadilArdiansyah.setInt(5, Integer.parseInt(stok_barangTextField.getText()));
-                        stat_FadilArdiansyah.setInt(6, Integer.parseInt(harga_barangTextField.getText()));
-                        stat_FadilArdiansyah.executeUpdate();
-
-                        JOptionPane.showMessageDialog(null, "Update Data Berhasil");
-                    } catch (Exception e) {
-                        //TODO: handle exception
-                        JOptionPane.showMessageDialog(null, "Update Data Gagal"+e);
-                    }
-                }
-            tabel();
-        } catch (Exception e) {
-            //TODO: handle exception
-        }
-    }//GEN-LAST:event_editButtonActionPerformed
-
-    private void hapusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusButtonActionPerformed
-        // TODO add your handling code here:
-        int ok_FadilArdiansyah = JOptionPane.showConfirmDialog(null, "Apakah Yakin Menghapus Data?", "Hapus Data", JOptionPane.YES_NO_CANCEL_OPTION);
-        if (ok_FadilArdiansyah == 0) {
-            try {
-                String sql_FadilArdiansyah = "delete from t_barang where id_barang="+Integer.parseInt(id_barangTextField.getText());
-                String resetno =  "ALTER TABLE t_barang DROP id_barang";
-                String consecutivenumbers = "ALTER TABLE t_barang ADD  id_barang INT( 3 ) NOT NULL AUTO_INCREMENT FIRST ,ADD KEY (id_barang)";
-                PreparedStatement stat_FadilArdiansyah = conn_FadilArdiansyah.prepareStatement(sql_FadilArdiansyah);
-                stat_FadilArdiansyah.executeUpdate();
-                conn_FadilArdiansyah.createStatement().execute(resetno);
-                conn_FadilArdiansyah.createStatement().execute(consecutivenumbers);
-                JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
-            } catch (Exception e) {
-                //TODO: handle exception
-                JOptionPane.showMessageDialog(null, "Hapus Data Gagal"+e);
-            }
-        }
-        tabel();
-    }//GEN-LAST:event_hapusButtonActionPerformed
+        tampil();
+    }//GEN-LAST:event_nama_barangTextFieldMouseClicked
 
     /**
      * @param args the command line arguments
@@ -319,31 +163,30 @@ private ResultSet res_FadilArdiansyah;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(data_barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(data_barangComboBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(data_barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(data_barangComboBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(data_barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(data_barangComboBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(data_barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(data_barangComboBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new data_barang().setVisible(true);
+                new data_barangComboBox().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tabel_Barang;
-    private javax.swing.JButton editButton;
-    private javax.swing.JButton hapusButton;
     private javax.swing.JTextField harga_barangTextField;
-    private javax.swing.JTextField id_barangTextField;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> id_barangComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -351,9 +194,7 @@ private ResultSet res_FadilArdiansyah;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nama_barangTextField;
-    private javax.swing.JButton simpanButton;
     private javax.swing.JTextField stok_barangTextField;
     private javax.swing.JComboBox<String> tipe_barangComboBox;
     private javax.swing.JComboBox<String> ukuran_barangComboBox;
@@ -370,41 +211,76 @@ private ResultSet res_FadilArdiansyah;
         }
     }
 
-    private void kosongkan() {
-        id_barangTextField.setText("");
-        nama_barangTextField.setText("");
-        tipe_barangComboBox.setSelectedIndex(-1);
-        ukuran_barangComboBox.setSelectedIndex(-1);
-        stok_barangTextField.setText("");
-        harga_barangTextField.setText("");
-    }
+    // private void kosongkan() {
+    //     id_barangTextField.setText("");
+    //     nama_barangTextField.setText("");
+    //     tipe_barangComboBox.setSelectedIndex(-1);
+    //     ukuran_barangComboBox.setSelectedIndex(-1);
+    //     stok_barangTextField.setText("");
+    //     harga_barangTextField.setText("");
+    // }
 
-    private void tabel(){
-        DefaultTableModel tabel = new DefaultTableModel();
-        tabel.addColumn("ID Barang");
-        tabel.addColumn("Nama Barang");
-        tabel.addColumn("Ukuran");
-        tabel.addColumn("Isi Volume");
-        tabel.addColumn("Stok Barang");
-        tabel.addColumn("Harga RP");
-        Tabel_Barang.setModel(tabel);
+    // private void tabel(){
+    //     DefaultTableModel tabel = new DefaultTableModel();
+    //     tabel.addColumn("ID Barang");
+    //     tabel.addColumn("Nama Barang");
+    //     tabel.addColumn("Ukuran");
+    //     tabel.addColumn("Isi Volume");
+    //     tabel.addColumn("Stok Barang");
+    //     tabel.addColumn("Harga RP");
+    //     Tabel_Barang.setModel(tabel);
 
+    //     try {
+    //         res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery("select * from t_barang");
+    //         while (res_FadilArdiansyah.next()) {
+    //             tabel.addRow(new Object[]
+    //             {
+    //                 res_FadilArdiansyah.getString("id_barang"),
+    //                 res_FadilArdiansyah.getString("nama_barang"),
+    //                 res_FadilArdiansyah.getString("tipe"),
+    //                 res_FadilArdiansyah.getString("ukuran"),
+    //                 res_FadilArdiansyah.getString("stok_barang"),
+    //                 res_FadilArdiansyah.getString("harga_barang")
+    //             });
+    //         }
+    //     } catch (Exception e) {
+    //         //TODO: handle exception
+    //         JOptionPane.showMessageDialog(null, e);
+    //     }
+    // }
+
+    private void tampil_combobox() {
         try {
-            res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery("select * from t_barang");
+            String sql = "select id_barang from t_barang order by id_barang asc";
+            res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery(sql);
+            id_barangComboBox.addItem("-Pilih Kode Barang");
             while (res_FadilArdiansyah.next()) {
-                tabel.addRow(new Object[]
-                {
-                    res_FadilArdiansyah.getString("id_barang"),
-                    res_FadilArdiansyah.getString("nama_barang"),
-                    res_FadilArdiansyah.getString("tipe"),
-                    res_FadilArdiansyah.getString("ukuran"),
-                    res_FadilArdiansyah.getString("stok_barang"),
-                    res_FadilArdiansyah.getString("harga_barang")
-                });
+                id_barangComboBox.addItem(res_FadilArdiansyah.getString("id_barang"));
+                
             }
         } catch (Exception e) {
             //TODO: handle exception
             JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    private void tampil() {
+        try {
+            String sql = "select nama_barang, tipe, ukuran, harga_barang, stok_barang from t_barang where id_barang='"+id_barangComboBox.getSelectedItem()+"'";
+            res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery(sql);
+
+            while (res_FadilArdiansyah.next()) {
+                {   
+                    nama_barangTextField.setText(res_FadilArdiansyah.getString("nama_barang"));
+                    tipe_barangComboBox.setSelectedItem(res_FadilArdiansyah.getString("tipe"));
+                    ukuran_barangComboBox.setSelectedItem(res_FadilArdiansyah.getString("ukuran"));
+                    harga_barangTextField.setText(res_FadilArdiansyah.getString("harga_barang"));
+                    stok_barangTextField.setText(res_FadilArdiansyah.getString("stok_barang"));
+                }
+            }
+        } catch (Exception e) {
+            //TODO: handle exception
+            JOptionPane.showMessageDialog(rootPane, e);
         }
     }
 }
