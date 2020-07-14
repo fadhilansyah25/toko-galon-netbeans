@@ -53,6 +53,7 @@ private ResultSet res_FadilArdiansyah;
         hapusButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         stok_barangTextField = new javax.swing.JTextField();
+        refresh_tabelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,8 +69,6 @@ private ResultSet res_FadilArdiansyah;
         jLabel5.setText("Ukuran");
 
         jLabel6.setText("Harga");
-
-        id_barangTextField.setEditable(false);
 
         tipe_barangComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Galon", "Kardus Gelas", "Kardus Botol" }));
         tipe_barangComboBox.setSelectedIndex(-1);
@@ -125,6 +124,13 @@ private ResultSet res_FadilArdiansyah;
 
         jLabel7.setText("Stok");
 
+        refresh_tabelButton.setText("Refresh Tabel");
+        refresh_tabelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refresh_tabelButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,9 +165,12 @@ private ResultSet res_FadilArdiansyah;
                         .addGap(18, 18, 18)
                         .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(refresh_tabelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +206,8 @@ private ResultSet res_FadilArdiansyah;
                         .addComponent(simpanButton)
                         .addComponent(jButton1)
                         .addComponent(editButton)
-                        .addComponent(hapusButton))
+                        .addComponent(hapusButton)
+                        .addComponent(refresh_tabelButton))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
                         .addComponent(stok_barangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -210,7 +220,8 @@ private ResultSet res_FadilArdiansyah;
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanButtonActionPerformed
         // TODO add your handling code here:
         try {
-            stat_FadilArdiansyah.executeUpdate("insert into t_barang values (NULL,"
+            stat_FadilArdiansyah.executeUpdate("insert into t_barang values ("
+            +"'"+id_barangTextField.getText()+"',"
             +"'"+nama_barangTextField.getText()+"',"
             +"'"+tipe_barangComboBox.getSelectedItem()+"',"
             +"'"+ukuran_barangComboBox.getSelectedItem()+"',"
@@ -288,12 +299,8 @@ private ResultSet res_FadilArdiansyah;
         if (ok_FadilArdiansyah == 0) {
             try {
                 String sql_FadilArdiansyah = "delete from t_barang where id_barang="+Integer.parseInt(id_barangTextField.getText());
-                String resetno =  "ALTER TABLE t_barang DROP id_barang";
-                String consecutivenumbers = "ALTER TABLE t_barang ADD  id_barang INT( 3 ) NOT NULL AUTO_INCREMENT FIRST ,ADD KEY (id_barang)";
                 PreparedStatement stat_FadilArdiansyah = conn_FadilArdiansyah.prepareStatement(sql_FadilArdiansyah);
                 stat_FadilArdiansyah.executeUpdate();
-                conn_FadilArdiansyah.createStatement().execute(resetno);
-                conn_FadilArdiansyah.createStatement().execute(consecutivenumbers);
                 JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
             } catch (Exception e) {
                 //TODO: handle exception
@@ -302,6 +309,11 @@ private ResultSet res_FadilArdiansyah;
         }
         tabel();
     }//GEN-LAST:event_hapusButtonActionPerformed
+
+    private void refresh_tabelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh_tabelButtonActionPerformed
+        // TODO add your handling code here:
+        tabel();
+    }//GEN-LAST:event_refresh_tabelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,6 +366,7 @@ private ResultSet res_FadilArdiansyah;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nama_barangTextField;
+    private javax.swing.JButton refresh_tabelButton;
     private javax.swing.JButton simpanButton;
     private javax.swing.JTextField stok_barangTextField;
     private javax.swing.JComboBox<String> tipe_barangComboBox;

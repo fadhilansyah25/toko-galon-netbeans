@@ -52,6 +52,7 @@ private ResultSet res_FadilArdiansyah;
         id_barangComboBox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         nama_barangTextField = new javax.swing.JTextField();
+        refresh_tabelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,11 +115,25 @@ private ResultSet res_FadilArdiansyah;
 
         jLabel7.setText("Jumlah Beli");
 
+        jumlah_beliTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jumlah_beliTextFieldMouseClicked(evt);
+            }
+        });
+
         jLabel4.setText("Nama Barang");
 
+        nama_barangTextField.setEditable(false);
         nama_barangTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nama_barangTextFieldMouseClicked(evt);
+            }
+        });
+
+        refresh_tabelButton.setText("Refresh Tabel");
+        refresh_tabelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refresh_tabelButtonActionPerformed(evt);
             }
         });
 
@@ -126,28 +141,29 @@ private ResultSet res_FadilArdiansyah;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nama_pembeliTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(id_transaksiTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(id_barangComboBox, 0, 134, Short.MAX_VALUE)
-                            .addComponent(nama_barangTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(jumlah_beliTextField)))
-                    .addComponent(jLabel1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nama_pembeliTextField)
+                            .addComponent(id_transaksiTextField)
+                            .addComponent(id_barangComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nama_barangTextField)
+                            .addComponent(jumlah_beliTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(69, 69, 69)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
                         .addComponent(simpanButton)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,18 +171,17 @@ private ResultSet res_FadilArdiansyah;
                         .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(67, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))))
+                        .addGap(18, 18, 18)
+                        .addComponent(refresh_tabelButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(51, 51, 51)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -174,8 +189,8 @@ private ResultSet res_FadilArdiansyah;
                             .addComponent(id_transaksiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nama_pembeliTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(nama_pembeliTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -189,12 +204,13 @@ private ResultSet res_FadilArdiansyah;
                             .addComponent(jLabel7)
                             .addComponent(jumlah_beliTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(simpanButton)
                     .addComponent(jButton1)
                     .addComponent(editButton)
-                    .addComponent(hapusButton))
+                    .addComponent(hapusButton)
+                    .addComponent(refresh_tabelButton))
                 .addGap(73, 73, 73))
         );
 
@@ -211,7 +227,7 @@ private ResultSet res_FadilArdiansyah;
             kosongkan();
             tabel();
 
-            JOptionPane.showMessageDialog(null, "Data Barang Berhasil Disimpan");
+            JOptionPane.showMessageDialog(null, "Data Transaksi Berhasil Disimpan");
         } catch (Exception e) {
             //TODO: handle exception
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan"+e);
@@ -296,6 +312,16 @@ private ResultSet res_FadilArdiansyah;
         tampil();
     }//GEN-LAST:event_nama_barangTextFieldMouseClicked
 
+    private void jumlah_beliTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jumlah_beliTextFieldMouseClicked
+        // TODO add your handling code here:
+        tampil();
+    }//GEN-LAST:event_jumlah_beliTextFieldMouseClicked
+
+    private void refresh_tabelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh_tabelButtonActionPerformed
+        // TODO add your handling code here:
+        tabel();
+    }//GEN-LAST:event_refresh_tabelButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -349,6 +375,7 @@ private ResultSet res_FadilArdiansyah;
     private javax.swing.JTextField jumlah_beliTextField;
     private javax.swing.JTextField nama_barangTextField;
     private javax.swing.JTextField nama_pembeliTextField;
+    private javax.swing.JButton refresh_tabelButton;
     private javax.swing.JButton simpanButton;
     // End of variables declaration//GEN-END:variables
 
