@@ -382,7 +382,7 @@ private ResultSet res_FadilArdiansyah;
     private void koneksi() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn_FadilArdiansyah = DriverManager.getConnection("jdbc:mysql://127.0.0.1/jual_air", "root", "");
+            conn_FadilArdiansyah = DriverManager.getConnection("jdbc:mysql://127.0.0.1/toko_galon", "root", "");
             stat_FadilArdiansyah = conn_FadilArdiansyah.createStatement();
         } catch (Exception e) {
             //TODO: handle exception
@@ -408,14 +408,14 @@ private ResultSet res_FadilArdiansyah;
         Tabel_Barang.setModel(tabel);
 
         try {
-            res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery("SELECT id_transaksi, nama_pembeli, jumlah_beli, t_barang.id_barang, t_barang.nama_barang FROM penjualan_air INNER JOIN t_barang ON penjualan_air.id_barang = t_barang.id_barang");
+            res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery("SELECT id_transaksi, nama_pembeli, jumlah_beli, tabel_databarang.id_barang, tabel_databarang.nama_barang FROM penjualan_air INNER JOIN tabel_databarang ON penjualan_air.id_barang = tabel_databarang.id_barang");
             while (res_FadilArdiansyah.next()) {
                 tabel.addRow(new Object[]
                 {
                     res_FadilArdiansyah.getString("id_transaksi"),
                     res_FadilArdiansyah.getString("nama_pembeli"),
-                    res_FadilArdiansyah.getString("t_barang.id_barang"),
-                    res_FadilArdiansyah.getString("t_barang.nama_barang"),
+                    res_FadilArdiansyah.getString("tabel_databarang.id_barang"),
+                    res_FadilArdiansyah.getString("tabel_databarang.nama_barang"),
                     res_FadilArdiansyah.getString("jumlah_beli")
                 });
             }
@@ -427,7 +427,7 @@ private ResultSet res_FadilArdiansyah;
 
     private void tampil_combobox() {
         try {
-            String sql = "select id_barang from t_barang order by id_barang asc";
+            String sql = "select id_barang from tabel_databarang order by id_barang asc";
             res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery(sql);
             id_barangComboBox.addItem("-Pilih Kode Barang");
             while (res_FadilArdiansyah.next()) {
@@ -442,7 +442,7 @@ private ResultSet res_FadilArdiansyah;
 
     private void tampil() {
         try {
-            String sql = "select nama_barang from t_barang where id_barang='"+id_barangComboBox.getSelectedItem()+"'";
+            String sql = "select nama_barang from tabel_databarang where id_barang='"+id_barangComboBox.getSelectedItem()+"'";
             res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery(sql);
 
             while (res_FadilArdiansyah.next()) {

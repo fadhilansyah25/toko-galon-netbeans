@@ -169,7 +169,7 @@ private ResultSet res_FadilArdiansyah;
                         .addGap(18, 18, 18)
                         .addComponent(refresh_tabelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -220,7 +220,7 @@ private ResultSet res_FadilArdiansyah;
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanButtonActionPerformed
         // TODO add your handling code here:
         try {
-            stat_FadilArdiansyah.executeUpdate("insert into t_barang values ("
+            stat_FadilArdiansyah.executeUpdate("insert into tabel_databarang values ("
             +"'"+id_barangTextField.getText()+"',"
             +"'"+nama_barangTextField.getText()+"',"
             +"'"+tipe_barangComboBox.getSelectedItem()+"',"
@@ -269,7 +269,7 @@ private ResultSet res_FadilArdiansyah;
         int ok_FadilArdiansyah = JOptionPane.showConfirmDialog(null, "Apakah ingin mengedit Data ini?", "Edit Data", JOptionPane.YES_NO_CANCEL_OPTION);
         try {
             PreparedStatement stat_FadilArdiansyah = conn_FadilArdiansyah.prepareStatement(
-                "update t_barang set id_barang=?, nama_barang=?, tipe=?, ukuran=?, stok_barang=?, harga_barang=? where id_barang='"
+                "update tabel_databarang set id_barang=?, nama_barang=?, tipe=?, ukuran=?, stok_barang=?, harga_barang=? where id_barang='"
                 +Integer.parseInt(id_barangTextField.getText())+"'");
                 if (ok_FadilArdiansyah == 0) {
                     try {
@@ -298,7 +298,7 @@ private ResultSet res_FadilArdiansyah;
         int ok_FadilArdiansyah = JOptionPane.showConfirmDialog(null, "Apakah Yakin Menghapus Data?", "Hapus Data", JOptionPane.YES_NO_CANCEL_OPTION);
         if (ok_FadilArdiansyah == 0) {
             try {
-                String sql_FadilArdiansyah = "delete from t_barang where id_barang="+Integer.parseInt(id_barangTextField.getText());
+                String sql_FadilArdiansyah = "delete from tabel_databarang where id_barang="+Integer.parseInt(id_barangTextField.getText());
                 PreparedStatement stat_FadilArdiansyah = conn_FadilArdiansyah.prepareStatement(sql_FadilArdiansyah);
                 stat_FadilArdiansyah.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
@@ -376,7 +376,7 @@ private ResultSet res_FadilArdiansyah;
     private void koneksi() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn_FadilArdiansyah = DriverManager.getConnection("jdbc:mysql://127.0.0.1/jual_air", "root", "");
+            conn_FadilArdiansyah = DriverManager.getConnection("jdbc:mysql://127.0.0.1/toko_galon", "root", "");
             stat_FadilArdiansyah = conn_FadilArdiansyah.createStatement();
         } catch (Exception e) {
             //TODO: handle exception
@@ -404,7 +404,7 @@ private ResultSet res_FadilArdiansyah;
         Tabel_Barang.setModel(tabel);
 
         try {
-            res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery("select * from t_barang");
+            res_FadilArdiansyah = stat_FadilArdiansyah.executeQuery("select * from tabel_databarang");
             while (res_FadilArdiansyah.next()) {
                 tabel.addRow(new Object[]
                 {
