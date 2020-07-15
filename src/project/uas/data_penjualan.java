@@ -53,6 +53,7 @@ private ResultSet res_FadilArdiansyah;
         jLabel4 = new javax.swing.JLabel();
         nama_barangTextField = new javax.swing.JTextField();
         refresh_tabelButton = new javax.swing.JButton();
+        kembaliButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,6 +138,13 @@ private ResultSet res_FadilArdiansyah;
             }
         });
 
+        kembaliButton.setText("Kembali");
+        kembaliButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kembaliButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,18 +170,20 @@ private ResultSet res_FadilArdiansyah;
                             .addComponent(nama_barangTextField)
                             .addComponent(jumlah_beliTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(69, 69, 69)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(simpanButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(refresh_tabelButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(kembaliButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(simpanButton)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(refresh_tabelButton))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
@@ -211,7 +221,9 @@ private ResultSet res_FadilArdiansyah;
                     .addComponent(editButton)
                     .addComponent(hapusButton)
                     .addComponent(refresh_tabelButton))
-                .addGap(73, 73, 73))
+                .addGap(18, 18, 18)
+                .addComponent(kembaliButton)
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -322,6 +334,11 @@ private ResultSet res_FadilArdiansyah;
         tabel();
     }//GEN-LAST:event_refresh_tabelButtonActionPerformed
 
+    private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_kembaliButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +390,7 @@ private ResultSet res_FadilArdiansyah;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jumlah_beliTextField;
+    private javax.swing.JButton kembaliButton;
     private javax.swing.JTextField nama_barangTextField;
     private javax.swing.JTextField nama_pembeliTextField;
     private javax.swing.JButton refresh_tabelButton;
