@@ -235,7 +235,11 @@ private ResultSet res_FadilArdiansyah;
             stat_FadilArdiansyah.executeUpdate("insert into belanja_stok values (NULL,"
             +"'"+nama_supplierTextField.getText()+"',"
             +"'"+id_barangComboBox.getSelectedItem()+"',"
-            +"'"+Integer.parseInt(jumlah_belanjaTextField.getText())+"')");
+            +"'"+Integer.parseInt(jumlah_belanjaTextField.getText())+"')");     
+            String resetno =  "ALTER TABLE penjualan_air DROP id_transaksi";
+            String consecutivenumbers = "ALTER TABLE penjualan_air ADD  id_transaksi INT( 3 ) NOT NULL AUTO_INCREMENT FIRST ,ADD KEY (id_transaksi)";
+            conn_FadilArdiansyah.createStatement().execute(resetno);
+            conn_FadilArdiansyah.createStatement().execute(consecutivenumbers);
             kosongkan();
             tabel();
 
