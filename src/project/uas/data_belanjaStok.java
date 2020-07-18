@@ -41,19 +41,19 @@ private ResultSet res_FadilArdiansyah;
         jLabel6 = new javax.swing.JLabel();
         id_belanjaTextField = new javax.swing.JTextField();
         nama_supplierTextField = new javax.swing.JTextField();
+        id_barangComboBox = new javax.swing.JComboBox<>();
+        nama_barangTextField = new javax.swing.JTextField();
+        jumlah_belanjaTextField = new javax.swing.JTextField();
         simpanButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabel_Barang = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         hapusButton = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jumlah_belanjaTextField = new javax.swing.JTextField();
-        id_barangComboBox = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        nama_barangTextField = new javax.swing.JTextField();
         refresh_tabelButton = new javax.swing.JButton();
         kembaliButton = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +67,19 @@ private ResultSet res_FadilArdiansyah;
         jLabel6.setText("Id Barang");
 
         id_belanjaTextField.setEditable(false);
+
+        nama_barangTextField.setEditable(false);
+        nama_barangTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nama_barangTextFieldMouseClicked(evt);
+            }
+        });
+
+        jumlah_belanjaTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jumlah_belanjaTextFieldMouseClicked(evt);
+            }
+        });
 
         simpanButton.setText("Simpan");
         simpanButton.addActionListener(new java.awt.event.ActionListener() {
@@ -114,23 +127,6 @@ private ResultSet res_FadilArdiansyah;
             }
         });
 
-        jLabel7.setText("Jumlah Belanja");
-
-        jumlah_belanjaTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jumlah_belanjaTextFieldMouseClicked(evt);
-            }
-        });
-
-        jLabel4.setText("Nama Barang");
-
-        nama_barangTextField.setEditable(false);
-        nama_barangTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nama_barangTextFieldMouseClicked(evt);
-            }
-        });
-
         refresh_tabelButton.setText("Refresh Tabel");
         refresh_tabelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +140,10 @@ private ResultSet res_FadilArdiansyah;
                 kembaliButtonActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("Jumlah Belanja");
+
+        jLabel4.setText("Nama Barang");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
