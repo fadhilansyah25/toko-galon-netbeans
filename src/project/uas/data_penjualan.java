@@ -44,7 +44,7 @@ private ResultSet res_FadilArdiansyah;
         simpanButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabel_Barang = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         hapusButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -93,10 +93,10 @@ private ResultSet res_FadilArdiansyah;
         });
         jScrollPane1.setViewportView(Tabel_Barang);
 
-        jButton1.setText("Clear");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        clearButton.setText("Clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                clearButtonActionPerformed(evt);
             }
         });
 
@@ -176,7 +176,7 @@ private ResultSet res_FadilArdiansyah;
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(simpanButton)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -217,7 +217,7 @@ private ResultSet res_FadilArdiansyah;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(simpanButton)
-                    .addComponent(jButton1)
+                    .addComponent(clearButton)
                     .addComponent(editButton)
                     .addComponent(hapusButton)
                     .addComponent(refresh_tabelButton))
@@ -236,6 +236,10 @@ private ResultSet res_FadilArdiansyah;
             +"'"+nama_pembeliTextField.getText()+"',"
             +"'"+id_barangComboBox.getSelectedItem()+"',"
             +"'"+Integer.parseInt(jumlah_beliTextField.getText())+"')");
+            String resetno =  "ALTER TABLE penjualan_air DROP id_transaksi";
+            String consecutivenumbers = "ALTER TABLE penjualan_air ADD  id_transaksi INT( 3 ) NOT NULL AUTO_INCREMENT FIRST ,ADD KEY (id_transaksi)";
+            conn_FadilArdiansyah.createStatement().execute(resetno);
+            conn_FadilArdiansyah.createStatement().execute(consecutivenumbers);
             kosongkan();
             tabel();
 
@@ -266,10 +270,10 @@ private ResultSet res_FadilArdiansyah;
         jumlah_beliTextField.setText(code4_FadilArdiasnyah);
     }//GEN-LAST:event_Tabel_BarangMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         // TODO add your handling code here:
         kosongkan();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_clearButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
@@ -282,8 +286,8 @@ private ResultSet res_FadilArdiansyah;
                     try {
                         stat_FadilArdiansyah.setInt(1, Integer.parseInt(id_transaksiTextField.getText()));
                         stat_FadilArdiansyah.setString(2, nama_pembeliTextField.getText());
-                        stat_FadilArdiansyah.setInt(3, (Integer)id_barangComboBox.getSelectedItem());
-                        stat_FadilArdiansyah.setInt(4, Integer.parseInt(jumlah_beliTextField.getText()));
+                        stat_FadilArdiansyah.setString(3, (String)id_barangComboBox.getSelectedItem());
+                        stat_FadilArdiansyah.setString(4, jumlah_beliTextField.getText());
                         stat_FadilArdiansyah.executeUpdate();
 
                         JOptionPane.showMessageDialog(null, "Update Data Berhasil");
@@ -377,11 +381,11 @@ private ResultSet res_FadilArdiansyah;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabel_Barang;
+    private javax.swing.JButton clearButton;
     private javax.swing.JButton editButton;
     private javax.swing.JButton hapusButton;
     private javax.swing.JComboBox<String> id_barangComboBox;
     private javax.swing.JTextField id_transaksiTextField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -48,7 +48,7 @@ private ResultSet res_FadilArdiansyah;
         simpanButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabel_Barang = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         hapusButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -102,10 +102,10 @@ private ResultSet res_FadilArdiansyah;
         });
         jScrollPane1.setViewportView(Tabel_Barang);
 
-        jButton1.setText("Clear");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        clearButton.setText("Clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                clearButtonActionPerformed(evt);
             }
         });
 
@@ -169,7 +169,7 @@ private ResultSet res_FadilArdiansyah;
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(simpanButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -213,7 +213,7 @@ private ResultSet res_FadilArdiansyah;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(simpanButton)
-                        .addComponent(jButton1)
+                        .addComponent(clearButton)
                         .addComponent(editButton)
                         .addComponent(hapusButton)
                         .addComponent(refresh_tabelButton)
@@ -269,10 +269,10 @@ private ResultSet res_FadilArdiansyah;
         harga_barangTextField.setText(code5_FadilArdiansyah);
     }//GEN-LAST:event_Tabel_BarangMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         // TODO add your handling code here:
         kosongkan();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_clearButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
@@ -367,11 +367,11 @@ private ResultSet res_FadilArdiansyah;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabel_Barang;
+    private javax.swing.JButton clearButton;
     private javax.swing.JButton editButton;
     private javax.swing.JButton hapusButton;
     private javax.swing.JTextField harga_barangTextField;
     private javax.swing.JTextField id_barangTextField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
